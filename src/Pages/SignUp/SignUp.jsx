@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const SignUp = () => {
   return (
     <div className="max-w-7xl bg-gray-200 mx-auto p-10">
-      <div className="w-full mx-auto max-w-md p-4 rounded-md shadow sm:p-8 bg-gray-100">
+      <div className="w-full mx-auto max-w-md p-4 rounded-md shadow-2xl sm:p-8 bg-gray-100">
         <h2 className="mb-3 text-3xl font-bold text-center">Sign Up to start learning</h2>
         <p className="text-sm text-center dark:text-gray-600 flex gap-3 justify-center">
           Already have an account?
@@ -13,7 +13,7 @@ const SignUp = () => {
           <button
             aria-label="Login with Google"
             type="button"
-            className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md border-gray-600"
+            className="btn btn-ghost flex items-center justify-center w-full p-4 space-x-4 border rounded-md border-gray-600"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +27,7 @@ const SignUp = () => {
           <button
             aria-label="Login with GitHub"
             role="button"
-            className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md border-gray-600"
+            className="btn btn-ghost flex items-center justify-center w-full p-4 space-x-4 border rounded-md border-gray-600"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +41,7 @@ const SignUp = () => {
           <button
             aria-label="Login with Twitter"
             role="button"
-            className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md border-gray-600 "
+            className="btn btn-ghost flex items-center justify-center w-full p-4 space-x-4 border rounded-md border-gray-600 "
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -61,14 +61,26 @@ const SignUp = () => {
         <form  className="space-y-8">
           <div className="space-y-4">
             <div className="space-y-2">
+              <label htmlFor="name" className="block text-sm">
+                Name
+              </label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="name"
+                className="w-full px-4 py-3 border border-gray-600 rounded-md"
+              />
+            </div>
+            <div className="space-y-2">
               <label htmlFor="email" className="block text-sm">
-                Email address
+                Email Address
               </label>
               <input
                 type="email"
                 name="email"
                 id="email"
-                placeholder="leroy@jenkins.com"
+                placeholder="example@email.com"
                 className="w-full px-4 py-3 border border-gray-600 rounded-md"
               />
             </div>
@@ -77,13 +89,6 @@ const SignUp = () => {
                 <label htmlFor="password" className="text-sm">
                   Password
                 </label>
-                <a
-                  rel="noopener noreferrer"
-                  href="#"
-                  className="text-xs hover:underline text-[#2c3e50]"
-                >
-                  Forgot password?
-                </a>
               </div>
               <input
                 type="password"
@@ -91,6 +96,18 @@ const SignUp = () => {
                 id="password"
                 placeholder="*****"
                 className="w-full px-4 py-3 border border-gray-600 rounded-md "
+              />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="photo" className="block text-sm">
+                PhotoURL
+              </label>
+              <input
+                type="text"
+                name="photo"
+                id="photo"
+                placeholder="photo url"
+                className="w-full px-4 py-3 border border-gray-600 rounded-md"
               />
             </div>
           </div>

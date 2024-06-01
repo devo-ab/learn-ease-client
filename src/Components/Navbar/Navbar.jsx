@@ -76,7 +76,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link>
+        <Link to="/sign-in">
           <button className="btn btn-ghost bg-[#e67e22] text-white hover:text-black">Sign In</button>
         </Link>
       </div>
