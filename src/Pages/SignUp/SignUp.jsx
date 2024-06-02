@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import useAuth from "../../Hooks/useAuth";
@@ -10,6 +10,7 @@ const SignUp = () => {
   const axiosPublic = useAxiosPublic();
   const { signUpUser, googleSignInUser, updateUserProfile } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const {
     register,
     handleSubmit,
@@ -66,16 +67,14 @@ const SignUp = () => {
         const userInfo = { name, email, photo, role };
         axiosPublic.post("/users", userInfo).then((res) => {
           console.log(res.data);
-          if (res.data.insertedId) {
             Swal.fire({
               position: "top-end",
               icon: "success",
-              title: "Sign up successfully",
+              title: "Google Sign up successfully",
               showConfirmButton: false,
               timer: 1500,
             });
-            navigate("/");
-          }
+            navigate(location?.state ? location.state : "/");
         });
       })
       .catch((error) => {
@@ -240,7 +239,7 @@ const SignUp = () => {
             type="submit"
             className="btn btn-ghost w-full text-white hover:text-[#2c3e50] px-8 py-3 font-semibold rounded-md bg-[#e67e22]"
           >
-            Sign in
+            Sign Up
           </button>
         </form>
       </div>
