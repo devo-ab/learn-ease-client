@@ -3,6 +3,7 @@ import Layouts from "../Layouts/Layouts";
 import ErrorElement from "../ErrorElement/ErrorElement";
 import SignUp from "../Pages/SignUp/SignUp";
 import SignIn from "../Pages/SignIn/SignIn";
+import Home from "../Pages/Home/Home";
 
 const router = createBrowserRouter([
   {
@@ -10,15 +11,19 @@ const router = createBrowserRouter([
     element: <Layouts></Layouts>,
     errorElement: <ErrorElement></ErrorElement>,
     children: [
-        {
-            path: "/sign-up",
-            element: <SignUp></SignUp>
-        },
-        {
-            path: "/sign-in",
-            element: <SignIn></SignIn>
-        }
-    ]
+      {
+        path: "/",
+        element: <Home></Home>,
+      },
+      {
+        path: "/sign-up",
+        element: <SignUp></SignUp>,
+      },
+      {
+        path: "/sign-in",
+        element: <SignIn></SignIn>,
+      },
+    ],
   },
 ]);
 
