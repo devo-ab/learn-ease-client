@@ -44,7 +44,7 @@ const Navbar = () => {
       icon: "success",
       title: "Sign out successfully",
       showConfirmButton: false,
-      timer: 1500
+      timer: 1500,
     });
     navigate("/");
   };
@@ -71,7 +71,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-gray-700 bg-opacity-90 rounded-box w-36"
           >
             {navLinks}
           </ul>
@@ -88,18 +88,47 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
+
       <div className="navbar-end">
-        {user ? (
-          <button onClick={handleSignOut} className="btn btn-ghost bg-[#e67e22] text-white hover:text-black">
-            Sign Out
-          </button>
-        ) : (
-          <Link to="/sign-in">
-            <button className="btn btn-ghost bg-[#e67e22] text-white hover:text-black">
-              Sign In
-            </button>
-          </Link>
-        )}
+
+        <div>
+          {user ? (
+            <div className="dropdown dropdown-end">
+            <div tabIndex={0} role="button" className="btn btn-circle rounded-full">
+              <div className="avatar">
+                <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                  <img src={user?.photoURL} />
+                </div>
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow bg-gray-700 bg-opacity-65 rounded-box w-36 text-white"
+            >
+              <li>
+                <p>{user?.displayName}</p>
+              </li>
+              <li>
+                <Link>Dashboard</Link>
+              </li>
+              <li>
+                <button
+                  onClick={handleSignOut}
+                  className="btn btn-ghost bg-[#e67e22] text-white hover:text-black"
+                >
+                  Sign Out
+                </button>
+              </li>
+            </ul>
+          </div>
+          ) : (
+            <Link to="/sign-in">
+              <button className="btn btn-ghost bg-[#e67e22] text-white hover:text-black">
+                Sign In
+              </button>
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );
