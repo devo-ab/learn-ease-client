@@ -1,14 +1,17 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { user, signOutUser } = useAuth();
+  const navigate = useNavigate();
+
   const navLinks = (
     <div className="md:space-x-5  md:space-y-0 flex flex-col md:flex-row items-center">
       <NavLink
         to="/"
         className={({ isActive }) =>
-          isActive
-            ? "text-[#e67e22] md:text-lg font-medium text-center"
-            : "text-center font-medium"
+          isActive ? "text-[#e67e22] md:text-lg font-medium text-center" : "text-center font-medium"
         }
       >
         Home
@@ -17,9 +20,7 @@ const Navbar = () => {
       <NavLink
         to=""
         className={({ isActive }) =>
-          isActive
-            ? "text-[#e67e22] md:text-lg font-medium text-center"
-            : "text-center font-medium"
+          isActive ? "text-[#e67e22] md:text-lg font-medium text-center" : "text-center font-medium"
         }
       >
         All Classes
@@ -28,15 +29,25 @@ const Navbar = () => {
       <NavLink
         to=""
         className={({ isActive }) =>
-          isActive
-            ? "text-[#e67e22] md:text-lg font-medium text-center"
-            : "text-center font-medium"
+          isActive ? "text-[#e67e22] md:text-lg font-medium text-center" : "text-center font-medium"
         }
       >
         Teach On LearnEase
       </NavLink>
     </div>
   );
+
+  const handleSignOut = () => {
+    signOutUser();
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Sign out successfully",
+      showConfirmButton: false,
+      timer: 1500
+    });
+    navigate("/");
+  };
 
   return (
     <div className="navbar z-10 max-w-7xl bg-[#686D76] bg-opacity-25">
@@ -66,19 +77,29 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="flex items-center">
-            <div className="w-12"><img src="/learnEase.png" alt="" /></div>
-            <Link to="/"><button className="text-xl font-bold">learnEase</button></Link>
+          <div className="w-12">
+            <img src="/learnEase.png" alt="" />
+          </div>
+          <Link to="/">
+            <button className="text-xl font-bold">learnEase</button>
+          </Link>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {navLinks}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/sign-in">
-          <button className="btn btn-ghost bg-[#e67e22] text-white hover:text-black">Sign In</button>
-        </Link>
+        {user ? (
+          <button onClick={handleSignOut} className="btn btn-ghost bg-[#e67e22] text-white hover:text-black">
+            Sign Out
+          </button>
+        ) : (
+          <Link to="/sign-in">
+            <button className="btn btn-ghost bg-[#e67e22] text-white hover:text-black">
+              Sign In
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );

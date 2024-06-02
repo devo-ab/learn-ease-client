@@ -12,7 +12,7 @@ const SignIn = () => {
         <p className="text-sm text-center dark:text-gray-600 flex gap-3 justify-center">
           Don't have an account?
           <Link to="/sign-up">
-            <p className="focus:underline hover:underline text-[#e67e22]">SignUp here</p>
+            <button className="focus:underline hover:underline text-[#e67e22]">SignUp here</button>
           </Link>
         </p>
 
