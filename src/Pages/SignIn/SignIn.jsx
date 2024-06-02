@@ -1,6 +1,10 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const SignIn = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
   return (
     <div className="max-w-7xl bg-gray-200 mx-auto p-10">
       <div className="w-full mx-auto max-w-md p-4 rounded-md shadow-2xl sm:p-8 bg-gray-100">
@@ -26,7 +30,7 @@ const SignIn = () => {
                 className="w-full px-4 py-3 border border-gray-600 rounded-md"
               />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-2 relative">
               <div className="flex justify-between">
                 <label htmlFor="password" className="text-sm">
                   Password
@@ -40,12 +44,18 @@ const SignIn = () => {
                 </a>
               </div>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 id="password"
                 placeholder="*****"
                 className="w-full px-4 py-3 border border-gray-600 rounded-md "
               />
+              <span
+                className="absolute top-1/2 right-2"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye />}
+              </span>
             </div>
           </div>
           <button

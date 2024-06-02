@@ -1,13 +1,20 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const SignUp = () => {
+
+    const [showPassword, setShowPassword] = useState(false);
+
   return (
     <div className="max-w-7xl bg-gray-200 mx-auto p-10">
       <div className="w-full mx-auto max-w-md p-4 rounded-md shadow-2xl sm:p-8 bg-gray-100">
         <h2 className="mb-3 text-3xl font-bold text-center">Sign Up to start learning</h2>
         <p className="text-sm text-center dark:text-gray-600 flex gap-3 justify-center">
           Already have an account?
-          <Link to="/sign-in"><p className="focus:underline hover:underline text-[#e67e22]">SignIn here</p></Link>
+          <Link to="/sign-in">
+            <p className="focus:underline hover:underline text-[#e67e22]">SignIn here</p>
+          </Link>
         </p>
         <div className="my-6 space-y-4">
           <button
@@ -58,7 +65,7 @@ const SignUp = () => {
           <p className="px-3 text-[#2c3e50]">OR</p>
           <hr className="w-full text-black" />
         </div>
-        <form  className="space-y-8">
+        <form className="space-y-8">
           <div className="space-y-4">
             <div className="space-y-2">
               <label htmlFor="name" className="block text-sm">
@@ -84,19 +91,25 @@ const SignUp = () => {
                 className="w-full px-4 py-3 border border-gray-600 rounded-md"
               />
             </div>
-            <div className="space-y-2">
+            <div className="space-y-2 relative">
               <div className="flex justify-between">
                 <label htmlFor="password" className="text-sm">
                   Password
                 </label>
               </div>
               <input
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 id="password"
                 placeholder="*****"
                 className="w-full px-4 py-3 border border-gray-600 rounded-md "
               />
+              <span
+                className="absolute top-1/2 right-2"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye />}
+              </span>
             </div>
             <div className="space-y-2">
               <label htmlFor="photo" className="block text-sm">
