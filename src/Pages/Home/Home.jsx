@@ -1,4 +1,5 @@
 import HomeBanner from "../../Components/HomeBanner/HomeBanner";
+import OurTeam from "../../Components/OurTeam/OurTeam";
 import TeacherSection from "../../Components/TeacherSection/TeacherSection";
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
         <div>
             <HomeBanner></HomeBanner>
             <TeacherSection></TeacherSection>
+            <OurTeam></OurTeam>
         </div>
     );
 };
