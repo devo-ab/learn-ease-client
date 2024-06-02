@@ -4,6 +4,7 @@ import ErrorElement from "../ErrorElement/ErrorElement";
 import SignUp from "../Pages/SignUp/SignUp";
 import SignIn from "../Pages/SignIn/SignIn";
 import Home from "../Pages/Home/Home";
+import TeachOnLearnEase from "../Pages/TeachOnLearnEase/TeachOnLearnEase";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/teach-on-lear-ease",
+        element: <TeachOnLearnEase></TeachOnLearnEase>
       },
       {
         path: "/sign-up",
