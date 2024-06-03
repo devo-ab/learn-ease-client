@@ -5,6 +5,8 @@ import SignUp from "../Pages/SignUp/SignUp";
 import SignIn from "../Pages/SignIn/SignIn";
 import Home from "../Pages/Home/Home";
 import TeachOnLearnEase from "../Pages/TeachOnLearnEase/TeachOnLearnEase";
+import DashboardLayouts from "../Layouts/DashboardLayouts";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +20,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/teach-on-lear-ease",
-        element: <TeachOnLearnEase></TeachOnLearnEase>
+        element: <PrivateRoutes><TeachOnLearnEase></TeachOnLearnEase></PrivateRoutes>
       },
       {
         path: "/sign-up",
@@ -30,6 +32,13 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/dashboard",
+    element: <PrivateRoutes><DashboardLayouts></DashboardLayouts></PrivateRoutes>,
+    children: [
+      {}
+    ]
+  }
 ]);
 
 export default router;
