@@ -15,6 +15,9 @@ import UserProfile from "../Pages/UserProfile";
 import AdminRoutes from "./AdminRoutes";
 import UserHome from "../Pages/UserDash/UserHome";
 import EnrollClasses from "../Pages/UserDash/EnrollClasses";
+import TeacherHome from "../Pages/TeacherDash/TeacherHome";
+import AddClass from "../Pages/TeacherDash/AddClass";
+import MyClass from "../Pages/TeacherDash/MyClass";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +66,21 @@ const router = createBrowserRouter([
       },
       // admin routes
 
+      // teacher routes
+      {
+        path: "teacher-home",
+        element: <PrivateRoutes><TeacherHome></TeacherHome></PrivateRoutes>
+      },
+      {
+        path: "add-class",
+        element: <PrivateRoutes><AddClass></AddClass></PrivateRoutes>
+      },
+      {
+        path: "my-class",
+        element: <PrivateRoutes><MyClass></MyClass></PrivateRoutes>
+      },
+      // teacher routes
+
       // user routes
       {
         path: "user-home",
@@ -77,7 +95,7 @@ const router = createBrowserRouter([
       // shared routes
       {
         path: "profile",
-        element: <UserProfile></UserProfile>
+        element: <PrivateRoutes><UserProfile></UserProfile></PrivateRoutes>
       }
       // shared routes
     ]
