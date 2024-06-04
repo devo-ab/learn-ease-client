@@ -7,6 +7,14 @@ import Home from "../Pages/Home/Home";
 import TeachOnLearnEase from "../Pages/TeachOnLearnEase/TeachOnLearnEase";
 import DashboardLayouts from "../Layouts/DashboardLayouts";
 import PrivateRoutes from "./PrivateRoutes";
+import AdminHome from "../Pages/AdminDash/AdminHome";
+import TeacherRequ from "../Pages/AdminDash/TeacherRequ";
+import Users from "../Pages/AdminDash/Users";
+import AllClasses from "../Pages/AdminDash/AllClasses";
+import UserProfile from "../Pages/UserProfile";
+import AdminRoutes from "./AdminRoutes";
+import UserHome from "../Pages/UserDash/UserHome";
+import EnrollClasses from "../Pages/UserDash/EnrollClasses";
 
 const router = createBrowserRouter([
   {
@@ -36,7 +44,42 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <PrivateRoutes><DashboardLayouts></DashboardLayouts></PrivateRoutes>,
     children: [
-      {}
+      // admin routes
+      {
+        path: "admin-home",
+        element: <AdminRoutes><AdminHome></AdminHome></AdminRoutes>
+      },
+      {
+        path: "teacher-request",
+        element: <AdminRoutes><TeacherRequ></TeacherRequ></AdminRoutes>
+      },
+      {
+        path: "users",
+        element: <AdminRoutes><Users></Users></AdminRoutes>
+      },
+      {
+        path: "all-classes",
+        element: <AdminRoutes><AllClasses></AllClasses></AdminRoutes>
+      },
+      // admin routes
+
+      // user routes
+      {
+        path: "user-home",
+        element: <PrivateRoutes><UserHome></UserHome></PrivateRoutes>
+      },
+      {
+        path: "enroll-classes",
+        element: <PrivateRoutes><EnrollClasses></EnrollClasses></PrivateRoutes>
+      },
+      // user routes
+
+      // shared routes
+      {
+        path: "profile",
+        element: <UserProfile></UserProfile>
+      }
+      // shared routes
     ]
   }
 ]);

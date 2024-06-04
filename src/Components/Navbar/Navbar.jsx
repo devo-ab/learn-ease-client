@@ -1,9 +1,13 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+// import useAdmin from "../../Hooks/useAdmin";
+// import useTeacher from "../../Hooks/useTeacher";
 
 const Navbar = () => {
   const { user, signOutUser } = useAuth();
+  // const [isAdmin] = useAdmin();
+  // const [isTeacher] = useTeacher();
   const navigate = useNavigate();
 
   const navLinks = (
@@ -109,7 +113,16 @@ const Navbar = () => {
                 <p>{user?.displayName}</p>
               </li>
               <li>
-                <Link to="/dashboard">Dashboard</Link>
+              <NavLink to="/dashboard">Dashboard</NavLink>
+                {/* {
+                  user && isAdmin && <NavLink to="/dashboard/admin-home">Dashboard</NavLink>
+                } */}
+                {/* {
+                  user && !isAdmin && !isTeacher && <NavLink to="/dashboard/user-home">Dashboard</NavLink>
+                } */}
+                {/* {
+                  user && isTeacher && <NavLink to="/dashboard/user-home">Dashboard</NavLink>
+                } */}
               </li>
               <li>
                 <button
