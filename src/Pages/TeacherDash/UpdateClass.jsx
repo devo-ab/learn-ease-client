@@ -1,13 +1,12 @@
 import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { useParams } from "react-router-dom";
-import useAuth from "../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
+import Swal from "sweetalert2";
 
 const UpdateClass = () => {
   const {id} = useParams();
   console.log(id);
-  const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const {
     register,
@@ -22,10 +21,10 @@ const UpdateClass = () => {
       return res.data;
     },
   });
-  console.log(item)
+  // console.log(item)
 
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     console.log(data);
     const title = data.title;
     const image = data.image;
@@ -34,6 +33,17 @@ const UpdateClass = () => {
     const description = data.description;
     const classInfo = {title, image, price, shortDes, description};
     console.log(classInfo);
+
+    const res = await axiosSecure.patch(`/updateclass/${id}`, classInfo)
+    if(res.data.modifiedCount > 0){
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Class update successfully",
+        showConfirmButton: false,
+        timer: 1500
+      });
+    }
   };
 
   return (
@@ -89,12 +99,12 @@ const UpdateClass = () => {
                     id="name"
                     name="name"
                     type="text"
-                    defaultValue={user?.displayName}
+                    defaultValue={item.name}
                     disabled
                     placeholder="Enter you name"
                     className="w-full rounded-md py-2 px-4 border border-gray-400"
                   />
-                  <input type="hidden" defaultValue={user.displayName} {...register("name")} />
+                  <input type="hidden" defaultValue={item.name} {...register("name")} />
                 </div>
 
                 <div className="col-span-full sm:col-span-3">
@@ -105,12 +115,12 @@ const UpdateClass = () => {
                     id="email"
                     name="email"
                     type="email"
-                    defaultValue={user?.email}
+                    defaultValue={item.email}
                     disabled
                     placeholder="Enter your email"
                     className="w-full rounded-md py-2 px-4 border border-gray-400"
                   />
-                  <input type="hidden" defaultValue={user.email} {...register("email")} />
+                  <input type="hidden" defaultValue={item.email} {...register("email")} />
                 </div>
 
                 <div className="col-span-full sm:col-span-3">
