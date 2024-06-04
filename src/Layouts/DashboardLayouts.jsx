@@ -62,7 +62,7 @@ const DashboardLayouts = () => {
         </ul>
       </div>
 
-      <div className="flex-1 p-8">
+      <div className="flex-1 p-1 md:p-8">
         <Outlet></Outlet>
       </div>
     </div>
