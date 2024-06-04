@@ -13,7 +13,7 @@ const DashboardLayouts = () => {
         <ul className="menu lg:p-4 text-white">
           {user && isAdmin && (
             <div>
-              <li className="border border-gray-600">
+              <li>
                 <NavLink to="/dashboard/admin-home">Admin Home</NavLink>
               </li>
               <li>

@@ -18,11 +18,13 @@ const AddClass = () => {
   const onSubmit = (data) => {
     const title = data.title;
     const name = data.name;
+    const image = data.image;
     const email = data.email;
     const price = data.price;
+    const shortDes = data.shortDes;
     const description = data.description;
     const status = "pending";
-    const classInfo = {title, name, email, price, description, status};
+    const classInfo = {title, name, email, image, price, shortDes, description, status};
     console.log(classInfo);
 
     axiosSecure.post('/class', classInfo)
@@ -45,7 +47,7 @@ const AddClass = () => {
   return (
     <div>
       <div className="mt-10">
-        <h1 className="text-4xl font-bold text-center">Add Class</h1>
+        <h1 className="text-2xl md:text-4xl font-bold text-center">Add Class</h1>
 
         {/* from start */}
         <section className="p-6 border border-gray-600 bg-gray-200 mt-5">
@@ -67,6 +69,7 @@ const AddClass = () => {
                     placeholder="Class Title Here"
                     className="w-full rounded-md py-2 px-4 border border-gray-400"
                   />
+                  {errors.title && <span className="text-red-600">Title is required</span>}
                 </div>
 
                 <div className="col-span-full sm:col-span-3">
@@ -81,6 +84,7 @@ const AddClass = () => {
                     placeholder="Image Url Here"
                     className="w-full rounded-md py-2 px-4 border border-gray-400"
                   />
+                  {errors.image && <span className="text-red-600">ImageURL is required</span>}
                 </div>
 
                 <div className="col-span-full sm:col-span-3">
@@ -127,6 +131,22 @@ const AddClass = () => {
                     placeholder="Price"
                     className="w-full rounded-md py-2 px-4 border border-gray-400"
                   />
+                  {errors.price && <span className="text-red-600">Price is required</span>}
+                </div>
+
+                <div className="col-span-full sm:col-span-3">
+                  <label htmlFor="shortDes" className="font-medium">
+                    Short Description
+                  </label>
+                  <textarea
+                    id="shortDes"
+                    name="shortDes"
+                    type="text"
+                    {...register("shortDes", { required: true })}
+                    placeholder="Description write here"
+                    className="w-full rounded-md py-2 px-4 border border-gray-400"
+                  />
+                  {errors.shortDes && <span className="text-red-600">Short Description is required</span>}
                 </div>
 
                 <div className="col-span-full">
@@ -138,9 +158,11 @@ const AddClass = () => {
                     name="description"
                     type="text"
                     {...register("description", { required: true })}
+                    rows={4}
                     placeholder="Description write here"
                     className="w-full rounded-md py-2 px-4 border border-gray-400"
                   />
+                  {errors.description && <span className="text-red-600">Description is required</span>}
                 </div>
 
                 <button
