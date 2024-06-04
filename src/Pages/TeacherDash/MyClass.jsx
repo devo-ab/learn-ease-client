@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyClass = () => {
   const { user } = useAuth();
@@ -14,6 +15,7 @@ const MyClass = () => {
       return res.data;
     },
   });
+  
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -42,7 +44,7 @@ const MyClass = () => {
     });
   };
 
-  
+
 
   return (
     <div>
@@ -54,21 +56,21 @@ const MyClass = () => {
             <img className="max-w-60 max-h-40" src={item.image} alt="" />
         </div>
         <div>
-            <h3 className="text-2xl font-semibold">Title : Ami Valo Nai</h3>
+            <h3 className="text-2xl font-semibold">Title : {item.title}</h3>
             <div className="flex gap-5 text-lg">
-                <p>Name : Avijit Biswas</p>
-                <p>Email : per.useravi@gmail.com</p>
+                <p>Name : {item.name}</p>
+                <p>Email : {item.email}</p>
             </div>
             <div className="flex gap-5">
-            <p>Price : $500</p>
-            <p>Status : Pending</p>
+            <p>Price : ${item.price}</p>
+            <p>Status : {item.status}</p>
             </div>
-            <p>Description : i hvhas sdvfhfd afgvdqvbbvc dfqvfguyqogfreuf  wefyfgvqw f fqewfogvuyf efuygfuio</p>
+            <p>Description : {item.description}</p>
         </div>
         <div className="flex flex-col items-center gap-5">
-            <button className="btn btn-ghost btn-sm bg-orange-500 text-white hover:text-black">Update</button>
+            <Link to={`/dashboard/update-class/${item._id}`}><button className="btn btn-ghost btn-sm bg-orange-500 text-white hover:text-black">Update</button></Link>
             <button onClick={() => handleDelete(item._id)} className="btn btn-ghost btn-sm bg-red-600 text-white hover:text-black">Delete</button>
-            <button className="btn btn-ghost btn-sm bg-orange-500 text-white hover:text-black">Deatils</button>
+            <button className="btn btn-ghost btn-sm bg-orange-500 text-white hover:text-black">Details</button>
         </div>
       </div>)
       }

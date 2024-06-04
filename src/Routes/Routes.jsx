@@ -18,6 +18,7 @@ import EnrollClasses from "../Pages/UserDash/EnrollClasses";
 import TeacherHome from "../Pages/TeacherDash/TeacherHome";
 import AddClass from "../Pages/TeacherDash/AddClass";
 import MyClass from "../Pages/TeacherDash/MyClass";
+import UpdateClass from "../Pages/TeacherDash/UpdateClass";
 
 const router = createBrowserRouter([
   {
@@ -78,6 +79,10 @@ const router = createBrowserRouter([
       {
         path: "my-class",
         element: <PrivateRoutes><MyClass></MyClass></PrivateRoutes>
+      },
+      {
+        path: "update-class/:id",
+        element: <PrivateRoutes><UpdateClass></UpdateClass></PrivateRoutes>
       },
       // teacher routes
 
