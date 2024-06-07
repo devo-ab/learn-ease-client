@@ -28,6 +28,9 @@ const DashboardLayouts = () => {
               <li>
                 <NavLink to="/dashboard/profile">Profile</NavLink>
               </li>
+              <li>
+                <NavLink to="/">Home</NavLink>
+              </li>
             </div>
           )}
           {user && !isAdmin && !isTeacher && (
@@ -40,6 +43,9 @@ const DashboardLayouts = () => {
               </li>
               <li>
                 <NavLink to="/dashboard/profile">Profile</NavLink>
+              </li>
+              <li>
+                <NavLink to="/">Home</NavLink>
               </li>
             </div>
           )}
@@ -56,6 +62,9 @@ const DashboardLayouts = () => {
               </li>
               <li>
                 <NavLink to="/dashboard/profile">Profile</NavLink>
+              </li>
+              <li>
+                <NavLink to="/">Home</NavLink>
               </li>
             </div>
           )}
