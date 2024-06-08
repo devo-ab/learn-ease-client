@@ -19,6 +19,7 @@ import TeacherHome from "../Pages/TeacherDash/TeacherHome";
 import AddClass from "../Pages/TeacherDash/AddClass";
 import MyClass from "../Pages/TeacherDash/MyClass";
 import UpdateClass from "../Pages/TeacherDash/UpdateClass";
+import PublicClass from "../Pages/PublicClass/PublicClass";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/public-classes",
+        element: <PublicClass></PublicClass>
       },
       {
         path: "/teach-on-lear-ease",

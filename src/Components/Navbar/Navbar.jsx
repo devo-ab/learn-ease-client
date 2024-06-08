@@ -22,7 +22,7 @@ const Navbar = () => {
       </NavLink>
 
       <NavLink
-        to=""
+        to="/public-classes"
         className={({ isActive }) =>
           isActive ? "text-[#e67e22] md:text-lg font-medium text-center" : "text-center font-medium"
         }

@@ -10,7 +10,6 @@ const TeachOnLearnEase = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm();
 

@@ -24,7 +24,8 @@ const AddClass = () => {
     const shortDes = data.shortDes;
     const description = data.description;
     const status = "pending";
-    const classInfo = {title, name, email, image, price, shortDes, description, status};
+    const totalEnroll = 0;
+    const classInfo = {title, name, email, image, price, shortDes, description, status , totalEnroll};
     console.log(classInfo);
 
     axiosSecure.post('/class', classInfo)
