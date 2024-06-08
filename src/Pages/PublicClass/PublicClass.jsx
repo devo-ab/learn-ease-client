@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { Link } from "react-router-dom";
 
 const PublicClass = () => {
   const axiosPublic = useAxiosPublic();
@@ -39,9 +40,11 @@ const PublicClass = () => {
 
               <div className="flex gap-10 items-center">
                 <p>Total Enrollment : {item.totalEnroll}</p>
-                <button className="btn btn-ghost btn-sm bg-[#e67e22] text-white hover:text-black">
-                  Enroll
-                </button>
+                <Link to={`/public-class-details/${item._id}`}>
+                  <button className="btn btn-ghost btn-sm bg-[#e67e22] text-white hover:text-black">
+                    Enroll
+                  </button>
+                </Link>
               </div>
             </div>
           ))}

@@ -20,6 +20,8 @@ import AddClass from "../Pages/TeacherDash/AddClass";
 import MyClass from "../Pages/TeacherDash/MyClass";
 import UpdateClass from "../Pages/TeacherDash/UpdateClass";
 import PublicClass from "../Pages/PublicClass/PublicClass";
+import ClassDetails from "../Pages/ClassDetails/ClassDetails";
+import Payment from "../Pages/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +36,14 @@ const router = createBrowserRouter([
       {
         path: "/public-classes",
         element: <PublicClass></PublicClass>
+      },
+      {
+        path: "/public-class-details/:id",
+        element: <ClassDetails></ClassDetails>
+      },
+      {
+        path : "/payment/:id",
+        element: <Payment></Payment>
       },
       {
         path: "/teach-on-lear-ease",
