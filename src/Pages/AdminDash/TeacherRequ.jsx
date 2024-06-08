@@ -27,17 +27,20 @@ const TeacherRequ = () => {
       confirmButtonText: "Yes, approved!",
     }).then((result) => {
       if (result.isConfirmed) {
-        refetch();
-        axiosSecure.patch(`/teacherrequ/${email}`, info);
-        Swal.fire({
-          title: "Approved",
-          text: "Teacher request accepted",
-          icon: "success",
+        axiosSecure.patch(`/teacherrequ/${email}`, info).then((res) => {
+          if (res.data.roleResult.modifiedCount && res.data.statusResult
+            .modifiedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Approved",
+              text: "Teacher request accepted",
+              icon: "success",
+            });
+          }
         });
       }
     });
   };
-
 
   const handleReject = (email) => {
     const status = "rejected";
@@ -53,12 +56,18 @@ const TeacherRequ = () => {
       confirmButtonText: "Yes, reject!",
     }).then((result) => {
       if (result.isConfirmed) {
-        refetch();
-        axiosSecure.patch(`/teacherrequ/${email}`, info);
-        Swal.fire({
-          title: "Rejected",
-          text: "Teacher request rejected",
-          icon: "success",
+        axiosSecure.patch(`/teacherrequ/${email}`, info)
+        .then((res) => {
+            console.log(res.data)
+          if (res.data.roleResult.modifiedCount && res.data.statusResult
+            .modifiedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Rejected",
+              text: "Teacher request rejected",
+              icon: "success",
+            });
+          }
         });
       }
     });
@@ -101,17 +110,38 @@ const TeacherRequ = () => {
                   <td>{item.category}</td>
                   <td>{item.status}</td>
                   <th>
-                    <button
-                      onClick={() => handleApproved(item.email)}
-                      className="btn btn-ghost bg-green-600 text-white hover:text-black"
-                    >
-                      Approve
-                    </button>
+                    {item.status === "approved" ? (
+                      <button
+                        disabled
+                        className="btn btn-ghost bg-green-600 text-white hover:text-black"
+                      >
+                        Approved
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => handleApproved(item.email)}
+                        className="btn btn-ghost bg-green-600 text-white hover:text-black"
+                      >
+                        Approve
+                      </button>
+                    )}
                   </th>
                   <th>
-                    <button onClick={() => handleReject(item.email)} className="btn btn-ghost bg-red-600 text-white hover:text-black">
-                      Reject
-                    </button>
+                    {item.status === "rejected" ? (
+                      <button
+                        disabled
+                        className="btn btn-ghost bg-red-600 text-white hover:text-black"
+                      >
+                        Rejected
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => handleReject(item.email)}
+                        className="btn btn-ghost bg-red-600 text-white hover:text-black"
+                      >
+                        Reject
+                      </button>
+                    )}
                   </th>
                 </tr>
               ))}
