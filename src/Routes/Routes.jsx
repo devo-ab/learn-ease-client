@@ -22,6 +22,7 @@ import UpdateClass from "../Pages/TeacherDash/UpdateClass";
 import PublicClass from "../Pages/PublicClass/PublicClass";
 import ClassDetails from "../Pages/ClassDetails/ClassDetails";
 import Payment from "../Pages/Payment/Payment";
+import TeaClassDetails from "../Pages/TeacherDash/TeaClassDetails";
 
 const router = createBrowserRouter([
   {
@@ -98,6 +99,10 @@ const router = createBrowserRouter([
       {
         path: "update-class/:id",
         element: <PrivateRoutes><UpdateClass></UpdateClass></PrivateRoutes>
+      },
+      {
+        path: "teacher-class/:id",
+        element: <TeaClassDetails></TeaClassDetails>
       },
       // teacher routes
 

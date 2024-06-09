@@ -25,7 +25,8 @@ const AddClass = () => {
     const description = data.description;
     const status = "pending";
     const totalEnroll = 0;
-    const classInfo = {title, name, email, image, price, shortDes, description, status , totalEnroll};
+    const totalAssignment = 0;
+    const classInfo = {title, name, email, image, price, shortDes, description, status , totalEnroll, totalAssignment};
     console.log(classInfo);
 
     axiosSecure.post('/class', classInfo)
@@ -36,7 +37,7 @@ const AddClass = () => {
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: "Your work has been saved",
+                title: "Your class has been added waiting for approval",
                 showConfirmButton: false,
                 timer: 1500
             });

@@ -71,7 +71,7 @@ const MyClass = () => {
             <Link to={`/dashboard/update-class/${item._id}`}><button className="btn btn-ghost btn-sm bg-orange-500 text-white hover:text-black">Update</button></Link>
             <button onClick={() => handleDelete(item._id)} className="btn btn-ghost btn-sm bg-red-600 text-white hover:text-black">Delete</button>
             {
-              item.status === "approved" ? <button className="btn btn-ghost btn-sm bg-orange-500 text-white hover:text-black">Details</button> : <button disabled className="btn btn-ghost btn-sm bg-orange-500 text-white hover:text-black">Details</button>
+              item.status === "approved" ? <Link to={`/dashboard/teacher-class/${item._id}`}><button className="btn btn-ghost btn-sm bg-orange-500 text-white hover:text-black">Details</button></Link> : <button disabled className="btn btn-ghost btn-sm bg-orange-500 text-white hover:text-black">Details</button>
             }
         </div>
       </div>)
