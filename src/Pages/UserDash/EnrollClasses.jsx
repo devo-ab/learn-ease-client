@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../Hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const EnrollClasses = () => {
   const { user } = useAuth();
@@ -23,7 +24,7 @@ const EnrollClasses = () => {
                 <img className="w-64" src={item.image} alt="" />
                 <p className="mt-2"><span className="font-medium">Title : </span>{item.title}</p>
                 <p><span className="font-medium">Post : </span>{item.name}</p>
-                <button className="btn btn-ghost btn-sm mt-1 bg-[#e67e22] text-white hover:text-black">Continue</button>
+                <Link item={item.classId} to={`/dashboard/my-enroll-class-details/${item._id}`}><button className="btn btn-ghost btn-sm mt-1 bg-[#e67e22] text-white hover:text-black">Continue</button></Link>
             </div>
         </div>
       ))}

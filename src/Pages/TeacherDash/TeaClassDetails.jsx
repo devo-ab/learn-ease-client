@@ -36,7 +36,8 @@ const TeaClassDetails = () => {
     const classId = item._id;
     const totalAssignment = item.totalAssignment;
     const assignmentCount = totalAssignment + 1;
-    const assignment = { title, date, description, classId, assignmentCount };
+    const assignmentSubmitted = 0;
+    const assignment = { title, date, description, classId, assignmentCount, assignmentSubmitted };
 
     axiosSecure.post("/assignment", assignment).then((res) => {
       console.log(res.data);
@@ -169,7 +170,7 @@ const TeaClassDetails = () => {
             <img className="max-w-60" src={submitted} alt="" />
             <div>
               <p className="text-2xl font-medium">{item.title}</p>
-              <p className="text-xl font font-medium">Per Day Submitted : {item.totalAssignment}</p>
+              <p className="text-xl font font-medium">Per Day Submitted : {item.totalSumbit}</p>
             </div>
           </div>
         </div>

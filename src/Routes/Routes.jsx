@@ -23,6 +23,7 @@ import PublicClass from "../Pages/PublicClass/PublicClass";
 import ClassDetails from "../Pages/ClassDetails/ClassDetails";
 import Payment from "../Pages/Payment/Payment";
 import TeaClassDetails from "../Pages/TeacherDash/TeaClassDetails";
+import MyEnrollClassDetails from "../Pages/MyEnrollClassDetails/MyEnrollClassDetails";
 
 const router = createBrowserRouter([
   {
@@ -114,6 +115,10 @@ const router = createBrowserRouter([
       {
         path: "enroll-classes",
         element: <PrivateRoutes><EnrollClasses></EnrollClasses></PrivateRoutes>
+      },
+      {
+        path: "my-enroll-class-details/:id",
+        element: <MyEnrollClassDetails></MyEnrollClassDetails>
       },
       // user routes
 
