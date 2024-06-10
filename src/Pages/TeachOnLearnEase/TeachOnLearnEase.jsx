@@ -4,10 +4,12 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
 import useTeacher from "../../Hooks/useTeacher";
+import useAdmin from "../../Hooks/useAdmin";
 
 const TeachOnLearnEase = () => {
   const { user } = useAuth();
   const [isTeacher] = useTeacher();
+  const [isAdmin] = useAdmin();
   const axiosPublic = useAxiosPublic();
   const {
     register,
@@ -78,7 +80,7 @@ const TeachOnLearnEase = () => {
           </div>
         )}
 
-        {teacher.length === 0 && !isTeacher && (
+        {teacher.length === 0 && !isTeacher && !isAdmin && (
           <div className="bg-gray-200 p-10 mt-5">
             <h1 className="text-2xl md:text-4xl font-bold text-center">
               Become a Teacher: Shape the Future with Us
