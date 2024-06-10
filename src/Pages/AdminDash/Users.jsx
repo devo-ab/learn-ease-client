@@ -15,7 +15,10 @@ const Users = () => {
 
   const onSubmit = (data) => {
     const searchInfo = data.search;
-    const item = { searchInfo };
+    // axiosSecure.get(`/search/${searchInfo}`)
+    // .then(res => {
+    //   console.log(res.data);
+    // })
   };
 
   const { data: user = [], refetch } = useQuery({

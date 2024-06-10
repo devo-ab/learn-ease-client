@@ -24,6 +24,7 @@ import ClassDetails from "../Pages/ClassDetails/ClassDetails";
 import Payment from "../Pages/Payment/Payment";
 import TeaClassDetails from "../Pages/TeacherDash/TeaClassDetails";
 import MyEnrollClassDetails from "../Pages/MyEnrollClassDetails/MyEnrollClassDetails";
+import SeeProgress from "../Pages/AdminDash/SeeProgress";
 
 const router = createBrowserRouter([
   {
@@ -41,11 +42,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/public-class-details/:id",
-        element: <ClassDetails></ClassDetails>
+        element: <PrivateRoutes><ClassDetails></ClassDetails></PrivateRoutes>
       },
       {
         path : "/payment/:id",
-        element: <Payment></Payment>
+        element: <PrivateRoutes><Payment></Payment></PrivateRoutes>
       },
       {
         path: "/teach-on-lear-ease",
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
       {
         path: "all-classes",
         element: <AdminRoutes><AllClasses></AllClasses></AdminRoutes>
+      },
+      {
+        path: "see-progress/:id",
+        element: <AdminRoutes><SeeProgress></SeeProgress></AdminRoutes>
       },
       // admin routes
 

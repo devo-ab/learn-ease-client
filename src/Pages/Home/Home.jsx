@@ -1,3 +1,4 @@
+import Feedback from "../../Components/Feedback/Feedback";
 import HighlightClass from "../../Components/HighlightClass/HighlightClass";
 import HomeBanner from "../../Components/HomeBanner/HomeBanner";
 import NewsLetter from "../../Components/NewsLetter/NewsLetter";
@@ -17,6 +18,7 @@ const Home = () => {
             <WebDetails></WebDetails>
             <OurTeam></OurTeam>
             <Partner></Partner>
+            <Feedback></Feedback>
             <NewsLetter></NewsLetter>
         </div>
     );

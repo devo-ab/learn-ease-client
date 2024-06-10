@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const AllClasses = () => {
   const axiosSecure = useAxiosSecure();
@@ -138,9 +139,9 @@ const AllClasses = () => {
                 </td>
                 <th>
                   {
-                    item.status === "approved" ? <button className="btn btn-ghost bg-orange-600 text-white hover:text-black">
+                    item.status === "approved" ? <Link to={`/dashboard/see-progress/${item._id}`}><button className="btn btn-ghost bg-orange-600 text-white hover:text-black">
                     Progress
-                  </button> : <button disabled className="btn btn-ghost bg-orange-600 text-white hover:text-black">
+                  </button></Link> : <button disabled className="btn btn-ghost bg-orange-600 text-white hover:text-black">
                     Progress
                   </button>
                   }

@@ -83,7 +83,8 @@ const MyEnrollClassDetails = () => {
     const title = assignment?.title;
     const userName = user?.displayName;
     const photo = user?.photoURL;
-    const info = { description, rate, title, userName, photo };
+    const classId = assignment?.classId;
+    const info = { description, rate, title, userName, photo, classId };
 
     axiosSecure.post("/rate", info).then((res) => {
       console.log(res.data);
